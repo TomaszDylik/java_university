@@ -1,0 +1,11 @@
+lab\Plane.class
+lab\Seaplane.class
+lab\Car.class
+lab\Vehicle.class
+lab\Motorcycle.class
+lab\Boat.class
+lab\Flyable.class
+lab\Main.class
+lab\Amphibian.class
+lab\Drivable.class
+lab\Swimmable.class
