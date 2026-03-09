@@ -4652,3 +4652,173 @@ WARNING: Unmatched cancel notification for request id 104
 2026.03.03 17:12:18 INFO  Shut down connection with build server.
 2026.03.03 17:12:18 INFO  Shut down connection with build server.
 2026.03.03 17:12:18 INFO  Exiting server
+2026.03.03 19:20:30 INFO  Started: Metals version 1.6.5 in folders 'C:\Users\tomek\Desktop\l2b2-platform, C:\Users\tomek\Desktop\java_university' for client Visual Studio Code 1.109.5.
+2026.03.03 19:20:30 INFO  Memory monitor started
+2026.03.03 19:20:32 INFO  Database: jdbc:h2:file:C:\Users\tomek\Desktop\java_university\.metals\metals (H2 2.4)
+2026.03.03 19:20:32 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:20:32 INFO  Successfully validated 7 migrations (execution time 00:00.043s)
+2026.03.03 19:20:32 INFO  Current version of schema "PUBLIC": 7
+2026.03.03 19:20:32 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:20:32 INFO  no build target found for C:\Users\tomek\Desktop\java_university\src\main\java\lab\Amphibian.java. Using fallback presentation compiler.
+2026.03.03 19:20:33 INFO  no build target found for C:\Users\tomek\Desktop\java_university\src\main\java\lab\Amphibian.java. Using fallback presentation compiler.
+2026.03.03 19:20:33 INFO  Attempting to connect to the build server...
+2026.03.03 19:20:33 INFO  Database: jdbc:h2:file:C:\Users\tomek\Desktop\l2b2-platform\.metals\metals (H2 2.4)
+2026.03.03 19:20:33 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:20:33 INFO  Successfully validated 7 migrations (execution time 00:00.011s)
+2026.03.03 19:20:33 INFO  Current version of schema "PUBLIC": 7
+2026.03.03 19:20:33 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:20:33 INFO  Attempting to connect to the build server...
+2026.03.03 19:20:33 INFO  Found a Bloop server running
+2026.03.03 19:20:33 INFO  Found a Bloop server running
+2026.03.03 19:20:34 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\tomek\Desktop\l2b2-platform\.metals\bsp.trace.json or C:\Users\tomek\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.03.03 19:20:34 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\tomek\Desktop\java_university\.metals\bsp.trace.json or C:\Users\tomek\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.03.03 19:20:34 INFO  time: Connected to build server in 0.61s
+2026.03.03 19:20:34 INFO  time: Connected to build server in 0.95s
+2026.03.03 19:20:33 INFO  Connected to Build server: Bloop v2.0.18
+2026.03.03 19:20:34 INFO  Connected to Build server: Bloop v2.0.18
+2026.03.03 19:20:34 INFO  time: Imported build in 0.12s
+2026.03.03 19:20:36 INFO  time: Imported build in 0.7s
+2026.03.03 19:20:39 INFO  Database: jdbc:h2:file:C:\Users\tomek\AppData\Roaming\metals\data\metals (H2 2.4)
+2026.03.03 19:20:39 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:20:39 INFO  Successfully validated 1 migration (execution time 00:00.004s)
+2026.03.03 19:20:39 INFO  Current version of schema "PUBLIC": 1
+2026.03.03 19:20:39 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:20:40 INFO  time: indexed workspace in 6.03s
+2026.03.03 19:20:45 INFO  Database: jdbc:h2:file:C:\Users\tomek\AppData\Roaming\metals\data\metals (H2 2.4)
+2026.03.03 19:20:45 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:20:45 INFO  Successfully validated 1 migration (execution time 00:00.003s)
+2026.03.03 19:20:45 INFO  Current version of schema "PUBLIC": 1
+2026.03.03 19:20:45 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:20:50 INFO  time: indexed workspace in 14s
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Car.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\test\java\lab\VehicleTest.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Drivable.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Seaplane.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Plane.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Boat.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Flyable.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Amphibian.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Main.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\test\java\lab\CarTest.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Vehicle.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Motorcycle.java
+2026.03.03 19:20:50 WARN  no build target for: C:\Users\tomek\Desktop\java_university\src\main\java\lab\Swimmable.java
+2026.03.03 19:27:10 INFO  logging to files C:\Users\tomek\Desktop\l2b2-platform\.metals\metals.log,C:\Users\tomek\Desktop\java_university\.metals\metals.log
+2026.03.03 19:29:15 INFO  Shut down connection with build server.
+2026.03.03 19:29:15 INFO  Shut down connection with build server.
+2026.03.03 19:29:15 INFO  logging to files C:\Users\tomek\Desktop\l2b2-platform\.metals\metals.log,C:\Users\tomek\Desktop\java_university\.metals\metals.log
+2026.03.03 19:29:15 INFO  Database: jdbc:h2:file:C:\Users\tomek\Desktop\l2b2-platform\.metals\metals (H2 2.4)
+2026.03.03 19:29:15 INFO  Database: jdbc:h2:file:C:\Users\tomek\Desktop\java_university\.metals\metals (H2 2.4)
+2026.03.03 19:29:15 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:29:15 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:29:15 INFO  Successfully validated 7 migrations (execution time 00:00.009s)
+2026.03.03 19:29:15 INFO  Successfully validated 7 migrations (execution time 00:00.009s)
+2026.03.03 19:29:15 INFO  Current version of schema "PUBLIC": 7
+2026.03.03 19:29:15 INFO  Current version of schema "PUBLIC": 7
+2026.03.03 19:29:15 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:29:15 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:29:15 INFO  Attempting to connect to the build server...
+2026.03.03 19:29:15 INFO  Attempting to connect to the build server...
+2026.03.03 19:29:15 INFO  Found a Bloop server running
+2026.03.03 19:29:15 INFO  Found a Bloop server running
+2026.03.03 19:29:15 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\tomek\Desktop\l2b2-platform\.metals\bsp.trace.json or C:\Users\tomek\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.03.03 19:29:16 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\tomek\Desktop\java_university\.metals\bsp.trace.json or C:\Users\tomek\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.03.03 19:29:16 INFO  time: Connected to build server in 0.13s
+2026.03.03 19:29:16 INFO  time: Connected to build server in 0.13s
+2026.03.03 19:29:15 INFO  Connected to Build server: Bloop v2.0.18
+2026.03.03 19:29:16 INFO  Connected to Build server: Bloop v2.0.18
+2026.03.03 19:29:16 INFO  time: Imported build in 0.3s
+2026.03.03 19:29:18 INFO  Database: jdbc:h2:file:C:\Users\tomek\AppData\Roaming\metals\data\metals (H2 2.4)
+2026.03.03 19:29:18 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:29:18 INFO  Successfully validated 1 migration (execution time 00:00.002s)
+2026.03.03 19:29:18 INFO  Current version of schema "PUBLIC": 1
+2026.03.03 19:29:18 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:29:18 INFO  time: indexed workspace in 2.43s
+2026.03.03 19:29:20 INFO  Database: jdbc:h2:file:C:\Users\tomek\AppData\Roaming\metals\data\metals (H2 2.4)
+2026.03.03 19:29:20 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.03 19:29:20 INFO  Successfully validated 1 migration (execution time 00:00.001s)
+2026.03.03 19:29:20 INFO  Current version of schema "PUBLIC": 1
+2026.03.03 19:29:20 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.03 19:29:22 INFO  Shutting down server
+2026.03.03 19:29:22 INFO  Memory monitor stopped
+2026.03.03 19:29:22 INFO  shutting down Metals
+2026.03.03 19:29:22 INFO  Shut down connection with build server.
+2026.03.03 19:29:22 INFO  Shut down connection with build server.
+2026.03.03 19:29:22 INFO  Exiting server
+2026.03.04 12:26:34 INFO  Started: Metals version 1.6.6 in folders 'C:\Users\tomek\Desktop\l2b2-platform, C:\Users\tomek\Desktop\java_university' for client Visual Studio Code 1.109.5.
+2026.03.04 12:26:34 INFO  Memory monitor started
+2026.03.04 12:26:35 INFO  Database: jdbc:h2:file:C:\Users\tomek\Desktop\l2b2-platform\.metals\metals (H2 2.4)
+2026.03.04 12:26:35 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.04 12:26:35 INFO  Successfully validated 7 migrations (execution time 00:00.035s)
+2026.03.04 12:26:35 INFO  Current version of schema "PUBLIC": 7
+2026.03.04 12:26:35 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.04 12:26:36 INFO  Attempting to connect to the build server...
+2026.03.04 12:26:36 INFO  Database: jdbc:h2:file:C:\Users\tomek\Desktop\java_university\.metals\metals (H2 2.4)
+2026.03.04 12:26:36 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.04 12:26:36 INFO  Successfully validated 7 migrations (execution time 00:00.007s)
+2026.03.04 12:26:36 INFO  Current version of schema "PUBLIC": 7
+2026.03.04 12:26:36 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.04 12:26:36 INFO  No running Bloop server found, starting one.
+2026.03.04 12:26:36 INFO  Attempting to connect to the build server...
+2026.03.04 12:26:36 INFO  No running Bloop server found, starting one.
+2026.03.04 12:26:41 INFO  Starting compilation server
+2026.03.04 12:26:41 INFO  Starting compilation server
+2026.03.04 12:26:45 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java
+2026.03.04 12:26:45 INFO  no build target found for C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java. Using fallback presentation compiler.
+2026.03.04 12:26:45 INFO  no build target found for C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java. Using fallback presentation compiler.
+mar 04, 2026 12:26:47 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1
+2026.03.04 12:26:47 INFO  no build target found for C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java. Using fallback presentation compiler.
+2026.03.04 12:26:47 INFO  no build target found for C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java. Using fallback presentation compiler.
+2026.03.04 12:26:47 INFO  no build target found for C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java. Using fallback presentation compiler.
+mar 04, 2026 12:26:47 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3
+mar 04, 2026 12:26:47 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9
+2026.03.04 12:26:47 INFO  no build target found for C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java. Using fallback presentation compiler.
+2026.03.04 12:26:50 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\tomek\Desktop\java_university\.metals\bsp.trace.json or C:\Users\tomek\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.03.04 12:26:50 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\tomek\Desktop\l2b2-platform\.metals\bsp.trace.json or C:\Users\tomek\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.03.04 12:26:51 INFO  time: Connected to build server in 14s
+2026.03.04 12:26:50 INFO  Connected to Build server: Bloop v2.0.19
+2026.03.04 12:26:51 INFO  time: Connected to build server in 15s
+2026.03.04 12:26:51 INFO  Connected to Build server: Bloop v2.0.19
+2026.03.04 12:26:51 INFO  time: Imported build in 0.17s
+2026.03.04 12:26:52 INFO  time: Imported build in 0.5s
+2026.03.04 12:26:55 INFO  Database: jdbc:h2:file:C:\Users\tomek\AppData\Roaming\metals\data\metals (H2 2.4)
+2026.03.04 12:26:55 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.04 12:26:55 INFO  Successfully validated 1 migration (execution time 00:00.004s)
+2026.03.04 12:26:55 INFO  Current version of schema "PUBLIC": 1
+2026.03.04 12:26:55 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.04 12:26:55 INFO  time: indexed workspace in 4.11s
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceUser.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\archivednews\service\ArchivedNewsRestoreTest.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\news\service\NewsUpdateTest.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\news\service\NewsCreateTest.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\main\java\pl\edu\ug\l2b2\platform\backend\feature\project\activeprojectinfo\tasks\service\TaskServiceAdmin.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\clockify\ClockifyServiceDefaultTest.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\guidelines\service\GuidelinesServiceDefaultTest.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\core\test\IntegrationTest.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\project\tasks\mockdata\TaskMockData.java
+2026.03.04 12:26:56 WARN  no build target for: C:\Users\tomek\Desktop\l2b2-platform\l2b2-platform-backend\src\test\java\pl\edu\ug\l2b2\platform\backend\feature\unit\project\filterspecification\ProjectServiceDefaultFilterTest.java
+2026.03.04 12:26:58 INFO  Database: jdbc:h2:file:C:\Users\tomek\AppData\Roaming\metals\data\metals (H2 2.4)
+2026.03.04 12:26:58 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.04 12:26:58 INFO  Successfully validated 1 migration (execution time 00:00.002s)
+2026.03.04 12:26:58 INFO  Current version of schema "PUBLIC": 1
+2026.03.04 12:26:58 INFO  Schema "PUBLIC" is up to date. No migration necessary.
+2026.03.04 12:27:19 INFO  time: indexed workspace in 27s
+2026.03.04 12:27:20 INFO  compiling l2b2-platform-backend (259 java sources)
+2026.03.04 12:27:40 INFO  compiling l2b2-platform-backend-test (146 java sources)
+2026.03.04 12:27:40 INFO  compiling l2b2-platform-backend-integrationtest (146 java sources)
+2026.03.04 12:27:40 INFO  time: compiled l2b2-platform-backend in 20s
+2026.03.04 12:27:55 INFO  Note: Some input files use unchecked or unsafe operations.
+2026.03.04 12:27:55 INFO  Note: Some input files use unchecked or unsafe operations.
+2026.03.04 12:27:55 INFO  Note: Recompile with -Xlint:unchecked for details.
+2026.03.04 12:27:55 INFO  Note: Recompile with -Xlint:unchecked for details.
+2026.03.04 12:28:00 INFO  time: compiled l2b2-platform-backend-test in 19s
+2026.03.04 12:28:00 INFO  time: compiled l2b2-platform-backend-integrationTest in 19s
+2026.03.04 12:48:23 INFO  Shutting down server
+2026.03.04 12:48:23 INFO  Memory monitor stopped
+2026.03.04 12:48:23 INFO  shutting down Metals
+2026.03.04 12:48:23 INFO  Shut down connection with build server.
+2026.03.04 12:48:24 INFO  Shut down connection with build server.
+2026.03.04 12:48:23 INFO  Exiting server
