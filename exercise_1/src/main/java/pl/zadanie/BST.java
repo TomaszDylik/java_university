@@ -18,7 +18,20 @@ public class BST {
      * Wstawia klucz do drzewa. Duplikaty są ignorowane.
      */
     public void insert(int key) {
-        // TODO: implementacja w Etapie 3
+        root = insertNode(root, key);
+    }
+
+    private BSTNode insertNode(BSTNode node, int key) {
+        if (node == null) {
+            return new BSTNode(key);
+        }
+        if (key < node.value) {
+            node.left = insertNode(node.left, key);
+        } else if (key > node.value) {
+            node.right = insertNode(node.right, key);
+        }
+        // key == node.value: duplikat — ignorujemy
+        return node;
     }
 
     /**
@@ -41,8 +54,20 @@ public class BST {
      * Sprawdza, czy klucz istnieje w drzewie.
      */
     public boolean contains(int key) {
-        // TODO: implementacja w Etapie 3
-        return false;
+        return containsNode(root, key);
+    }
+
+    private boolean containsNode(BSTNode node, int key) {
+        if (node == null) {
+            return false;
+        }
+        if (key == node.value) {
+            return true;
+        }
+        if (key < node.value) {
+            return containsNode(node.left, key);
+        }
+        return containsNode(node.right, key);
     }
 
     /**
