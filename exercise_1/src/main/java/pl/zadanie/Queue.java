@@ -8,6 +8,9 @@ public class Queue<A> {
     /** Pierwszy element kolejki (początek listy). */
     private Node<A> head;
 
+    /** Ostatni element kolejki — umożliwia O(1) enqueue. */
+    private Node<A> tail;
+
     /** Węzeł listy używanej wewnętrznie przez kolejkę. */
     private static class Node<A> {
         A value;
@@ -21,6 +24,7 @@ public class Queue<A> {
 
     public Queue() {
         this.head = null;
+        this.tail = null;
     }
 
     /**
@@ -35,16 +39,13 @@ public class Queue<A> {
      */
     public void enqueue(A value) {
         Node<A> newNode = new Node<>(value);
-        
         if (isEmpty()) {
             head = newNode;
-            return;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
         }
-        Node<A> current = head;
-        while (current.next != null) {
-            current = current.next;
-        }
-        current.next = newNode;
     }
     
     /**
@@ -56,6 +57,9 @@ public class Queue<A> {
         }
         A removedValue = head.value;
         head = head.next;
+        if (head == null) {
+            tail = null;
+        }
         return removedValue;
     }
 }
