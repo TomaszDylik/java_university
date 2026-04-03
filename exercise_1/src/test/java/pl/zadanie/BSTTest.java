@@ -5,8 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 /**
- * Testy opisujące zachowanie BST — pisane przed implementacją (TDD).
- * Większość testów jest czerwona do czasu Etapu 3.
+ * Testy opisujące zachowanie BST
  */
 public class BSTTest {
 
@@ -108,5 +107,87 @@ public class BSTTest {
         bst.insert(4);
 
         assertEquals(List.of(5, 3, 7, 1, 4), bst.bfs());
+    }
+
+    /** Usunięcie liścia. */
+    @Test
+    public void shouldDeleteLeafNode() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+
+        bst.delete(3);
+
+        assertFalse(bst.contains(3), "Usunięty liść nie powinien być w drzewie");
+        assertEquals(List.of(5, 7), bst.bfs());
+    }
+
+    /** Usunięcie węzła z jednym dzieckiem. */
+    @Test
+    public void shouldDeleteNodeWithOneChild() {
+        BST bst = new BST();
+        //   5
+        //  /
+        // 3
+        //  \
+        //   4
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(4);
+
+        bst.delete(3);
+
+        assertFalse(bst.contains(3), "Usunięty węzeł nie powinien być w drzewie");
+        assertTrue(bst.contains(4), "Dziecko usuniętego węzła powinno pozostać");
+        assertEquals(List.of(5, 4), bst.bfs());
+    }
+
+    /** Usunięcie węzła z dwojgiem dzieci — zastępowany następnikiem in-order. */
+    @Test
+    public void shouldDeleteNodeWithTwoChildren() {
+        BST bst = new BST();
+        //      5
+        //     / \
+        //    3   7
+        //   / \
+        //  1   4
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+        bst.insert(1);
+        bst.insert(4);
+
+        bst.delete(3);
+
+        assertFalse(bst.contains(3), "Usunięty węzeł nie powinien być w drzewie");
+        assertTrue(bst.contains(1), "Lewe dziecko powinno pozostać");
+        assertTrue(bst.contains(4), "Prawe dziecko powinno pozostać");
+        assertTrue(bst.contains(5), "Korzeń powinien pozostać");
+    }
+
+    /** Usunięcie korzenia. */
+    @Test
+    public void shouldDeleteRoot() {
+        BST bst = new BST();
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(7);
+
+        bst.delete(5);
+
+        assertFalse(bst.contains(5), "Korzeń powinien zostać usunięty");
+        assertTrue(bst.contains(3));
+        assertTrue(bst.contains(7));
+    }
+
+    /** Usunięcie nieistniejącego klucza nie powinno rzucać wyjątku. */
+    @Test
+    public void shouldNotThrowWhenDeletingAbsentKey() {
+        BST bst = new BST();
+        bst.insert(5);
+
+        assertDoesNotThrow(() -> bst.delete(99));
+        assertTrue(bst.contains(5), "Pozostałe elementy powinny być nienaruszone");
     }
 }

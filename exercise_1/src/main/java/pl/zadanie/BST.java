@@ -1,5 +1,6 @@
 package pl.zadanie;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,12 +43,26 @@ public class BST {
     }
 
     /**
-     * Przeszukiwanie wszerz (BFS) — zwraca elementy poziom po poziomie.
-     * Używa wewnętrznie klasy Queue<BSTNode>.
+     * Przeszukiwanie wszerz (BFS)
      */
     public List<Integer> bfs() {
-        // TODO: implementacja w Etapie 5
-        return List.of();
+        List<Integer> result = new ArrayList<>();
+        if (isEmpty()) {
+            return result;
+        }
+        Queue<BSTNode> queue = new Queue<>();
+        queue.enqueue(root);
+        while (!queue.isEmpty()) {
+            BSTNode current = queue.dequeue();
+            result.add(current.value);
+            if (current.left != null) {
+                queue.enqueue(current.left);
+            }
+            if (current.right != null) {
+                queue.enqueue(current.right);
+            }
+        }
+        return result;
     }
 
     /**
