@@ -9,7 +9,22 @@ import java.util.List;
  */
 public class BST {
 
-    BSTNode root;
+    private Node root;
+
+    /**
+     * Węzeł drzewa BST.
+     */
+    static class Node {
+        int value;
+        Node left;
+        Node right;
+
+        Node(int value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+    }
 
     public BST() {
         this.root = null;
@@ -22,9 +37,9 @@ public class BST {
         root = insertNode(root, key);
     }
 
-    private BSTNode insertNode(BSTNode node, int key) {
+    private Node insertNode(Node node, int key) {
         if (node == null) {
-            return new BSTNode(key);
+            return new Node(key);
         }
         if (key < node.value) {
             node.left = insertNode(node.left, key);
@@ -42,7 +57,7 @@ public class BST {
         root = deleteNode(root, key);
     }
 
-    private BSTNode deleteNode(BSTNode node, int key) {
+    private Node deleteNode(Node node, int key) {
         if (node == null) {
             return null;
         }
@@ -69,7 +84,7 @@ public class BST {
         return node;
     }
 
-    private int findMin(BSTNode node) {
+    private int findMin(Node node) {
         while (node.left != null) {
             node = node.left;
         }
@@ -84,10 +99,10 @@ public class BST {
         if (isEmpty()) {
             return result;
         }
-        Queue<BSTNode> queue = new Queue<>();
+        Queue<Node> queue = new Queue<>();
         queue.enqueue(root);
         while (!queue.isEmpty()) {
-            BSTNode current = queue.dequeue();
+            Node current = queue.dequeue();
             result.add(current.value);
             if (current.left != null) {
                 queue.enqueue(current.left);
@@ -106,7 +121,7 @@ public class BST {
         return containsNode(root, key);
     }
 
-    private boolean containsNode(BSTNode node, int key) {
+    private boolean containsNode(Node node, int key) {
         if (node == null) {
             return false;
         }

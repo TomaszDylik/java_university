@@ -46,26 +46,28 @@ public class BSTTest {
         assertFalse(bst.contains(99), "Drzewo nie powinno zawierać elementu, który nie był wstawiony");
     }
 
-    /** Element mniejszy od korzenia powinien trafić w lewe poddrzewo. */
+    /** Mniejszy element powinien trafić w lewe poddrzewo. */
     @Test
     public void smallerElementShouldGoLeft() {
         BST bst = new BST();
         bst.insert(5);
         bst.insert(3);
 
-        assertNotNull(bst.root.left, "Mniejszy element powinien być lewym dzieckiem korzenia");
-        assertEquals(3, bst.root.left.value);
+        // BFS zwraca: korzeń, lewe, prawe — 3 powinno być drugie
+        assertEquals(List.of(5, 3), bst.bfs());
+        assertTrue(bst.contains(3));
     }
 
-    /** Element większy od korzenia powinien trafić w prawe poddrzewo. */
+    /** Większy element powinien trafić w prawe poddrzewo. */
     @Test
     public void largerElementShouldGoRight() {
         BST bst = new BST();
         bst.insert(5);
         bst.insert(7);
 
-        assertNotNull(bst.root.right, "Większy element powinien być prawym dzieckiem korzenia");
-        assertEquals(7, bst.root.right.value);
+        // BFS zwraca: korzeń, lewe, prawe — 7 powinno być drugie
+        assertEquals(List.of(5, 7), bst.bfs());
+        assertTrue(bst.contains(7));
     }
 
     /** Wstawienie kilku elementów — BFS powinien zwrócić je poziom po poziomie. */
