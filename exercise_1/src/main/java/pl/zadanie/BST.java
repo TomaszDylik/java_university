@@ -39,7 +39,41 @@ public class BST {
      * Usuwa węzeł o podanym kluczu z drzewa.
      */
     public void delete(int key) {
-        // TODO: implementacja w Etapie 4
+        root = deleteNode(root, key);
+    }
+
+    private BSTNode deleteNode(BSTNode node, int key) {
+        if (node == null) {
+            return null;
+        }
+        if (key < node.value) {
+            node.left = deleteNode(node.left, key);
+        } else if (key > node.value) {
+            node.right = deleteNode(node.right, key);
+        } else {
+            // Znaleziono węzeł do usunięcia — 3 przypadki:
+            if (node.left == null) {
+                // Przypadek 1: brak lewego dziecka (liść lub jedno prawe dziecko)
+                return node.right;
+            }
+            if (node.right == null) {
+                // Przypadek 2: brak prawego dziecka (jedno lewe dziecko)
+                return node.left;
+            }
+            // Przypadek 3: dwoje dzieci — zastąp wartością następnika in-order
+            // (najmniejszy węzeł w prawym poddrzewie)
+            int successorValue = findMin(node.right);
+            node.value = successorValue;
+            node.right = deleteNode(node.right, successorValue);
+        }
+        return node;
+    }
+
+    private int findMin(BSTNode node) {
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node.value;
     }
 
     /**
