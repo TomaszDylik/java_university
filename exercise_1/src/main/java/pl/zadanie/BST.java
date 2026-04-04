@@ -60,8 +60,8 @@ public class BST {
                 // Przypadek 2: brak prawego dziecka (jedno lewe dziecko)
                 return node.left;
             }
-            // Przypadek 3: dwoje dzieci — zastąp wartością następnika in-order
-            // (najmniejszy węzeł w prawym poddrzewie)
+            // Przypadek 3: dwoje dzieci — in-order
+            // (bo większy niż lewe dziecko, mniejszy niż prawe dziecko)
             int successorValue = findMin(node.right);
             node.value = successorValue;
             node.right = deleteNode(node.right, successorValue);
