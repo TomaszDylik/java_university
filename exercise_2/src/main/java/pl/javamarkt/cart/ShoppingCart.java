@@ -22,6 +22,27 @@ public final class ShoppingCart {
         return new ArrayList<>(products);
     }
 
+    public ShoppingCart withPromotion(PromotionStrategy promotionStrategy) {
+        Objects.requireNonNull(promotionStrategy, "Promotion strategy cannot be null");
+
+        List<PromotionStrategy> updatedPromotionStrategies = new ArrayList<>(promotionStrategies);
+        updatedPromotionStrategies.add(promotionStrategy);
+        return new ShoppingCart(products, updatedPromotionStrategies);
+    }
+
+    public ShoppingCart withoutPromotion(PromotionStrategy promotionStrategy) {
+        Objects.requireNonNull(promotionStrategy, "Promotion strategy cannot be null");
+
+        List<PromotionStrategy> updatedPromotionStrategies = new ArrayList<>();
+        for (PromotionStrategy registeredPromotionStrategy : promotionStrategies) {
+            if (registeredPromotionStrategy != promotionStrategy) {
+                updatedPromotionStrategies.add(registeredPromotionStrategy);
+            }
+        }
+
+        return new ShoppingCart(products, updatedPromotionStrategies);
+    }
+
     public List<Product> getProductsAfterPromotions() {
         List<Product> currentProducts = new ArrayList<>(products);
 
