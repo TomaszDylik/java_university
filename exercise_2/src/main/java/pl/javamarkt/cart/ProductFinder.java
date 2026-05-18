@@ -1,22 +1,23 @@
 package pl.javamarkt.cart;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
 public final class ProductFinder {
 
-    public Optional<Product> findCheapest(Product[] products) {
-        validateProductsArray(products);
+    public Optional<Product> findCheapest(List<Product> products) {
+        validateProductsList(products);
 
-        if (products.length == 0) {
+        if (products.isEmpty()) {
             return Optional.empty();
         }
 
-        Product cheapest = products[0];
-        for (int index = 1; index < products.length; index++) {
-            Product currentProduct = products[index];
+        Product cheapest = products.get(0);
+        for (int index = 1; index < products.size(); index++) {
+            Product currentProduct = products.get(index);
             if (currentProduct.getPrice() < cheapest.getPrice()) {
                 cheapest = currentProduct;
             }
@@ -25,16 +26,16 @@ public final class ProductFinder {
         return Optional.of(cheapest);
     }
 
-    public Optional<Product> findMostExpensive(Product[] products) {
-        validateProductsArray(products);
+    public Optional<Product> findMostExpensive(List<Product> products) {
+        validateProductsList(products);
 
-        if (products.length == 0) {
+        if (products.isEmpty()) {
             return Optional.empty();
         }
 
-        Product mostExpensive = products[0];
-        for (int index = 1; index < products.length; index++) {
-            Product currentProduct = products[index];
+        Product mostExpensive = products.get(0);
+        for (int index = 1; index < products.size(); index++) {
+            Product currentProduct = products.get(index);
             if (currentProduct.getPrice() > mostExpensive.getPrice()) {
                 mostExpensive = currentProduct;
             }
@@ -43,30 +44,30 @@ public final class ProductFinder {
         return Optional.of(mostExpensive);
     }
 
-    public Product[] findCheapestProducts(Product[] products, int count) {
-        validateProductsArray(products);
+    public List<Product> findCheapestProducts(List<Product> products, int count) {
+        validateProductsList(products);
         validateRequestedCount(count);
 
-        Product[] copiedProducts = Arrays.copyOf(products, products.length);
-        Arrays.sort(copiedProducts, Comparator.comparingDouble(Product::getPrice));
-        return Arrays.copyOf(copiedProducts, Math.min(count, copiedProducts.length));
+        List<Product> copiedProducts = new ArrayList<>(products);
+        copiedProducts.sort(Comparator.comparingDouble(Product::getPrice));
+        return new ArrayList<>(copiedProducts.subList(0, Math.min(count, copiedProducts.size())));
     }
 
-    public Product[] findMostExpensiveProducts(Product[] products, int count) {
-        validateProductsArray(products);
+    public List<Product> findMostExpensiveProducts(List<Product> products, int count) {
+        validateProductsList(products);
         validateRequestedCount(count);
 
-        Product[] copiedProducts = Arrays.copyOf(products, products.length);
-        Arrays.sort(copiedProducts, Comparator.comparingDouble(Product::getPrice).reversed());
-        return Arrays.copyOf(copiedProducts, Math.min(count, copiedProducts.length));
+        List<Product> copiedProducts = new ArrayList<>(products);
+        copiedProducts.sort(Comparator.comparingDouble(Product::getPrice).reversed());
+        return new ArrayList<>(copiedProducts.subList(0, Math.min(count, copiedProducts.size())));
     }
 
-    private void validateProductsArray(Product[] products) {
-        Objects.requireNonNull(products, "Products array cannot be null");
+    private void validateProductsList(List<Product> products) {
+        Objects.requireNonNull(products, "Products list cannot be null");
 
         for (Product product : products) {
             if (product == null) {
-                throw new IllegalArgumentException("Products array cannot contain null elements");
+                throw new IllegalArgumentException("Products list cannot contain null elements");
             }
         }
     }

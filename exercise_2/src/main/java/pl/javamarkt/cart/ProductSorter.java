@@ -1,7 +1,8 @@
 package pl.javamarkt.cart;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 public final class ProductSorter {
@@ -11,20 +12,20 @@ public final class ProductSorter {
                     .reversed()
                     .thenComparing(Product::getName);
 
-    public Product[] sort(Product[] products, Comparator<Product> comparator) {
-        Objects.requireNonNull(products, "Products array cannot be null");
+    public List<Product> sort(List<Product> products, Comparator<Product> comparator) {
+        Objects.requireNonNull(products, "Products list cannot be null");
         Objects.requireNonNull(comparator, "Comparator cannot be null");
 
-        Product[] copiedProducts = Arrays.copyOf(products, products.length);
-        validateProductsArray(copiedProducts);
-        Arrays.sort(copiedProducts, comparator);
+        List<Product> copiedProducts = new ArrayList<>(products);
+        validateProductsList(copiedProducts);
+        copiedProducts.sort(comparator);
         return copiedProducts;
     }
 
-    private void validateProductsArray(Product[] products) {
+    private void validateProductsList(List<Product> products) {
         for (Product product : products) {
             if (product == null) {
-                throw new IllegalArgumentException("Products array cannot contain null elements");
+                throw new IllegalArgumentException("Products list cannot contain null elements");
             }
         }
     }

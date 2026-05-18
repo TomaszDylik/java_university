@@ -3,8 +3,9 @@ package pl.javamarkt.cart;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.Arrays;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,11 +20,11 @@ class ProductSorterTest {
         Product tea = new Product("CODE-002", "Herbata", 10.00);
         Product sugar = new Product("CODE-003", "Cukier", 5.50);
 
-        Product[] products = {tea, sugar, coffee};
+        List<Product> products = List.of(tea, sugar, coffee);
 
-        Product[] result = productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
+        List<Product> result = productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
 
-        assertArrayEquals(new Product[]{coffee, tea, sugar}, result);
+        assertEquals(List.of(coffee, tea, sugar), result);
     }
 
     @Test
@@ -32,18 +33,18 @@ class ProductSorterTest {
         Product apples = new Product("CODE-002", "Jablka", 10.00);
         Product tea = new Product("CODE-003", "Herbata", 5.00);
 
-        Product[] products = {bananas, tea, apples};
+        List<Product> products = List.of(bananas, tea, apples);
 
-        Product[] result = productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
+        List<Product> result = productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
 
-        assertArrayEquals(new Product[]{bananas, apples, tea}, result);
+        assertEquals(List.of(bananas, apples, tea), result);
     }
 
     @Test
-    void shouldReturnEmptyArrayWhenInputIsEmpty() {
-        Product[] result = productSorter.sort(new Product[0], ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
+    void shouldReturnEmptyListWhenInputIsEmpty() {
+        List<Product> result = productSorter.sort(List.of(), ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
 
-        assertEquals(0, result.length);
+        assertEquals(0, result.size());
     }
 
     @Test
@@ -52,11 +53,11 @@ class ProductSorterTest {
         Product coffee = new Product("CODE-002", "Kawa", 19.99);
         Product sugar = new Product("CODE-003", "Cukier", 5.50);
 
-        Product[] products = {tea, coffee, sugar};
+        List<Product> products = List.of(tea, coffee, sugar);
 
-        Product[] result = productSorter.sort(products, Comparator.comparing(Product::getName));
+        List<Product> result = productSorter.sort(products, Comparator.comparing(Product::getName));
 
-        assertArrayEquals(new Product[]{sugar, tea, coffee}, result);
+        assertEquals(List.of(sugar, tea, coffee), result);
     }
 
     @Test
@@ -65,34 +66,34 @@ class ProductSorterTest {
         Product coffee = new Product("CODE-002", "Kawa", 19.99);
         Product sugar = new Product("CODE-003", "Cukier", 5.50);
 
-        Product[] products = {tea, coffee, sugar};
+        List<Product> products = List.of(tea, coffee, sugar);
 
-        Product[] result = productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
+        List<Product> result = productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC);
 
         assertNotSame(products, result);
-        assertArrayEquals(new Product[]{tea, coffee, sugar}, products);
-        assertArrayEquals(new Product[]{coffee, tea, sugar}, result);
+        assertEquals(List.of(tea, coffee, sugar), products);
+        assertEquals(List.of(coffee, tea, sugar), result);
     }
 
     @Test
-    void shouldRejectNullArray() {
+    void shouldRejectNullList() {
         assertThrows(NullPointerException.class,
                 () -> productSorter.sort(null, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC));
     }
 
     @Test
     void shouldRejectNullComparator() {
-        Product[] products = {new Product("CODE-001", "Kawa", 19.99)};
+        List<Product> products = List.of(new Product("CODE-001", "Kawa", 19.99));
 
         assertThrows(NullPointerException.class, () -> productSorter.sort(products, null));
     }
 
     @Test
-    void shouldRejectArrayContainingNullProduct() {
-        Product[] products = {
+    void shouldRejectListContainingNullProduct() {
+        List<Product> products = Arrays.asList(
                 new Product("CODE-001", "Kawa", 19.99),
                 null
-        };
+        );
 
         assertThrows(IllegalArgumentException.class,
                 () -> productSorter.sort(products, ProductSorter.BY_PRICE_DESC_THEN_NAME_ASC));

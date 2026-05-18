@@ -2,9 +2,10 @@ package pl.javamarkt.cart;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,15 +16,15 @@ class ProductFinderTest {
     private final ProductFinder productFinder = new ProductFinder();
 
     @Test
-    void shouldReturnEmptyForCheapestWhenArrayIsEmpty() {
-        Optional<Product> result = productFinder.findCheapest(new Product[0]);
+    void shouldReturnEmptyForCheapestWhenListIsEmpty() {
+        Optional<Product> result = productFinder.findCheapest(List.of());
 
         assertTrue(result.isEmpty());
     }
 
     @Test
-    void shouldReturnEmptyForMostExpensiveWhenArrayIsEmpty() {
-        Optional<Product> result = productFinder.findMostExpensive(new Product[0]);
+    void shouldReturnEmptyForMostExpensiveWhenListIsEmpty() {
+        Optional<Product> result = productFinder.findMostExpensive(List.of());
 
         assertTrue(result.isEmpty());
     }
@@ -31,7 +32,7 @@ class ProductFinderTest {
     @Test
     void shouldReturnSingleProductAsCheapestAndMostExpensive() {
         Product product = new Product("CODE-001", "Kawa", 19.99);
-        Product[] products = {product};
+        List<Product> products = List.of(product);
 
         assertSame(product, productFinder.findCheapest(products).orElseThrow());
         assertSame(product, productFinder.findMostExpensive(products).orElseThrow());
@@ -43,7 +44,7 @@ class ProductFinderTest {
         Product sugar = new Product("CODE-002", "Cukier", 5.50);
         Product tea = new Product("CODE-003", "Herbata", 10.00);
 
-        Product[] products = {coffee, sugar, tea};
+        List<Product> products = List.of(coffee, sugar, tea);
 
         assertSame(sugar, productFinder.findCheapest(products).orElseThrow());
     }
@@ -54,7 +55,7 @@ class ProductFinderTest {
         Product sugar = new Product("CODE-002", "Cukier", 5.50);
         Product tea = new Product("CODE-003", "Herbata", 10.00);
 
-        Product[] products = {coffee, sugar, tea};
+        List<Product> products = List.of(coffee, sugar, tea);
 
         assertSame(coffee, productFinder.findMostExpensive(products).orElseThrow());
     }
@@ -64,23 +65,23 @@ class ProductFinderTest {
         Product mug = new Product("CODE-001", "Kubek", 0.0);
         Product tea = new Product("CODE-002", "Herbata", 10.00);
 
-        Product[] products = {tea, mug};
+        List<Product> products = List.of(tea, mug);
 
         assertEquals(0.0, productFinder.findCheapest(products).orElseThrow().getPrice(), 0.0001);
     }
 
     @Test
-    void shouldRejectNullArray() {
+    void shouldRejectNullList() {
         assertThrows(NullPointerException.class, () -> productFinder.findCheapest(null));
         assertThrows(NullPointerException.class, () -> productFinder.findMostExpensive(null));
     }
 
     @Test
-    void shouldRejectArrayContainingNullProduct() {
-        Product[] products = {
+    void shouldRejectListContainingNullProduct() {
+        List<Product> products = Arrays.asList(
                 new Product("CODE-001", "Kawa", 19.99),
                 null
-        };
+        );
 
         assertThrows(IllegalArgumentException.class, () -> productFinder.findCheapest(products));
         assertThrows(IllegalArgumentException.class, () -> productFinder.findMostExpensive(products));
@@ -93,11 +94,11 @@ class ProductFinderTest {
         Product tea = new Product("CODE-003", "Herbata", 10.00);
         Product mug = new Product("CODE-004", "Kubek", 0.0);
 
-        Product[] products = {coffee, sugar, tea, mug};
+        List<Product> products = List.of(coffee, sugar, tea, mug);
 
-        Product[] result = productFinder.findCheapestProducts(products, 2);
+        List<Product> result = productFinder.findCheapestProducts(products, 2);
 
-        assertArrayEquals(new Product[]{mug, sugar}, result);
+        assertEquals(List.of(mug, sugar), result);
     }
 
     @Test
@@ -107,21 +108,19 @@ class ProductFinderTest {
         Product tea = new Product("CODE-003", "Herbata", 10.00);
         Product mug = new Product("CODE-004", "Kubek", 0.0);
 
-        Product[] products = {coffee, sugar, tea, mug};
+        List<Product> products = List.of(coffee, sugar, tea, mug);
 
-        Product[] result = productFinder.findMostExpensiveProducts(products, 2);
+        List<Product> result = productFinder.findMostExpensiveProducts(products, 2);
 
-        assertArrayEquals(new Product[]{coffee, tea}, result);
+        assertEquals(List.of(coffee, tea), result);
     }
 
     @Test
     void shouldReturnEmptyArrayWhenRequestedCountIsZero() {
-        Product[] products = {
-                new Product("CODE-001", "Kawa", 19.99)
-        };
+        List<Product> products = List.of(new Product("CODE-001", "Kawa", 19.99));
 
-        assertEquals(0, productFinder.findCheapestProducts(products, 0).length);
-        assertEquals(0, productFinder.findMostExpensiveProducts(products, 0).length);
+        assertEquals(0, productFinder.findCheapestProducts(products, 0).size());
+        assertEquals(0, productFinder.findMostExpensiveProducts(products, 0).size());
     }
 
     @Test
@@ -129,17 +128,15 @@ class ProductFinderTest {
         Product coffee = new Product("CODE-001", "Kawa", 19.99);
         Product sugar = new Product("CODE-002", "Cukier", 5.50);
 
-        Product[] products = {coffee, sugar};
+        List<Product> products = List.of(coffee, sugar);
 
-        assertArrayEquals(new Product[]{sugar, coffee}, productFinder.findCheapestProducts(products, 10));
-        assertArrayEquals(new Product[]{coffee, sugar}, productFinder.findMostExpensiveProducts(products, 10));
+        assertEquals(List.of(sugar, coffee), productFinder.findCheapestProducts(products, 10));
+        assertEquals(List.of(coffee, sugar), productFinder.findMostExpensiveProducts(products, 10));
     }
 
     @Test
     void shouldRejectNegativeRequestedCount() {
-        Product[] products = {
-                new Product("CODE-001", "Kawa", 19.99)
-        };
+        List<Product> products = List.of(new Product("CODE-001", "Kawa", 19.99));
 
         assertThrows(IllegalArgumentException.class, () -> productFinder.findCheapestProducts(products, -1));
         assertThrows(IllegalArgumentException.class, () -> productFinder.findMostExpensiveProducts(products, -1));
