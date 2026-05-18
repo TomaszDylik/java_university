@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -83,5 +84,64 @@ class ProductFinderTest {
 
         assertThrows(IllegalArgumentException.class, () -> productFinder.findCheapest(products));
         assertThrows(IllegalArgumentException.class, () -> productFinder.findMostExpensive(products));
+    }
+
+    @Test
+    void shouldReturnRequestedNumberOfCheapestProductsInAscendingOrder() {
+        Product coffee = new Product("CODE-001", "Kawa", 19.99);
+        Product sugar = new Product("CODE-002", "Cukier", 5.50);
+        Product tea = new Product("CODE-003", "Herbata", 10.00);
+        Product mug = new Product("CODE-004", "Kubek", 0.0);
+
+        Product[] products = {coffee, sugar, tea, mug};
+
+        Product[] result = productFinder.findCheapestProducts(products, 2);
+
+        assertArrayEquals(new Product[]{mug, sugar}, result);
+    }
+
+    @Test
+    void shouldReturnRequestedNumberOfMostExpensiveProductsInDescendingOrder() {
+        Product coffee = new Product("CODE-001", "Kawa", 19.99);
+        Product sugar = new Product("CODE-002", "Cukier", 5.50);
+        Product tea = new Product("CODE-003", "Herbata", 10.00);
+        Product mug = new Product("CODE-004", "Kubek", 0.0);
+
+        Product[] products = {coffee, sugar, tea, mug};
+
+        Product[] result = productFinder.findMostExpensiveProducts(products, 2);
+
+        assertArrayEquals(new Product[]{coffee, tea}, result);
+    }
+
+    @Test
+    void shouldReturnEmptyArrayWhenRequestedCountIsZero() {
+        Product[] products = {
+                new Product("CODE-001", "Kawa", 19.99)
+        };
+
+        assertEquals(0, productFinder.findCheapestProducts(products, 0).length);
+        assertEquals(0, productFinder.findMostExpensiveProducts(products, 0).length);
+    }
+
+    @Test
+    void shouldReturnAllAvailableProductsWhenRequestedCountIsGreaterThanArrayLength() {
+        Product coffee = new Product("CODE-001", "Kawa", 19.99);
+        Product sugar = new Product("CODE-002", "Cukier", 5.50);
+
+        Product[] products = {coffee, sugar};
+
+        assertArrayEquals(new Product[]{sugar, coffee}, productFinder.findCheapestProducts(products, 10));
+        assertArrayEquals(new Product[]{coffee, sugar}, productFinder.findMostExpensiveProducts(products, 10));
+    }
+
+    @Test
+    void shouldRejectNegativeRequestedCount() {
+        Product[] products = {
+                new Product("CODE-001", "Kawa", 19.99)
+        };
+
+        assertThrows(IllegalArgumentException.class, () -> productFinder.findCheapestProducts(products, -1));
+        assertThrows(IllegalArgumentException.class, () -> productFinder.findMostExpensiveProducts(products, -1));
     }
 }

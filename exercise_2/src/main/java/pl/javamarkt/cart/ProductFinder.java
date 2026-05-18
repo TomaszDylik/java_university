@@ -1,5 +1,7 @@
 package pl.javamarkt.cart;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -41,6 +43,24 @@ public final class ProductFinder {
         return Optional.of(mostExpensive);
     }
 
+    public Product[] findCheapestProducts(Product[] products, int count) {
+        validateProductsArray(products);
+        validateRequestedCount(count);
+
+        Product[] copiedProducts = Arrays.copyOf(products, products.length);
+        Arrays.sort(copiedProducts, Comparator.comparingDouble(Product::getPrice));
+        return Arrays.copyOf(copiedProducts, Math.min(count, copiedProducts.length));
+    }
+
+    public Product[] findMostExpensiveProducts(Product[] products, int count) {
+        validateProductsArray(products);
+        validateRequestedCount(count);
+
+        Product[] copiedProducts = Arrays.copyOf(products, products.length);
+        Arrays.sort(copiedProducts, Comparator.comparingDouble(Product::getPrice).reversed());
+        return Arrays.copyOf(copiedProducts, Math.min(count, copiedProducts.length));
+    }
+
     private void validateProductsArray(Product[] products) {
         Objects.requireNonNull(products, "Products array cannot be null");
 
@@ -48,6 +68,12 @@ public final class ProductFinder {
             if (product == null) {
                 throw new IllegalArgumentException("Products array cannot contain null elements");
             }
+        }
+    }
+
+    private void validateRequestedCount(int count) {
+        if (count < 0) {
+            throw new IllegalArgumentException("Requested product count cannot be negative");
         }
     }
 }
