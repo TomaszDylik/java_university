@@ -1,0 +1,73 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Product {
+  - code: String
+  - name: String
+  - price: double
+  - discountPrice: double
+  + getCode(): String
+  + getName(): String
+  + getPrice(): double
+  + getDiscountPrice(): double
+  + withDiscountPrice(newDiscountPrice: double): Product
+}
+
+class PriceCalculator {
+  + sum(products: List<Product>): double
+}
+
+class ProductFinder {
+  + findCheapest(products: List<Product>): Optional<Product>
+  + findMostExpensive(products: List<Product>): Optional<Product>
+  + findCheapestProducts(products: List<Product>, count: int): List<Product>
+  + findMostExpensiveProducts(products: List<Product>, count: int): List<Product>
+}
+
+class ProductSorter {
+  {static} BY_PRICE_DESC_THEN_NAME_ASC: Comparator<Product>
+  + sort(products: List<Product>, comparator: Comparator<Product>): List<Product>
+}
+
+interface PromotionStrategy {
+  + apply(products: List<Product>): List<Product>
+}
+
+class ShoppingCart {
+  - products: List<Product>
+  - promotionStrategies: List<PromotionStrategy>
+  + getProducts(): List<Product>
+  + withPromotion(promotionStrategy: PromotionStrategy): ShoppingCart
+  + withoutPromotion(promotionStrategy: PromotionStrategy): ShoppingCart
+  + getProductsAfterPromotions(): List<Product>
+}
+
+class FivePercentDiscountAboveThresholdPromotion {
+  + apply(products: List<Product>): List<Product>
+}
+
+class BuyTwoGetCheapestFreePromotion {
+  + apply(products: List<Product>): List<Product>
+}
+
+class FreeMugAboveThresholdPromotion {
+  + apply(products: List<Product>): List<Product>
+}
+
+class SingleUseCouponPromotion {
+  - targetProductCode: String
+  - used: boolean
+  + apply(products: List<Product>): List<Product>
+}
+
+PriceCalculator ..> Product
+ProductFinder ..> Product
+ProductSorter ..> Product
+ShoppingCart o-- Product
+ShoppingCart o-- PromotionStrategy
+FivePercentDiscountAboveThresholdPromotion ..|> PromotionStrategy
+BuyTwoGetCheapestFreePromotion ..|> PromotionStrategy
+FreeMugAboveThresholdPromotion ..|> PromotionStrategy
+SingleUseCouponPromotion ..|> PromotionStrategy
+
+@enduml
