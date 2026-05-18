@@ -46,4 +46,8 @@ public final class Product {
     public double getDiscountPrice() {
         return discountPrice;
     }
+
+    public Product withDiscountPrice(double newDiscountPrice) {
+        return new Product(code, name, price, newDiscountPrice);
+    }
 }

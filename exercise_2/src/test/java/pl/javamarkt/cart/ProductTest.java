@@ -34,4 +34,19 @@ class ProductTest {
     void shouldRejectNegativePrice() {
         assertThrows(IllegalArgumentException.class, () -> new Product("CODE-001", "Kawa", -1.00));
     }
+
+    @Test
+    void shouldCreateNewProductWithChangedDiscountPrice() {
+        Product product = new Product("CODE-001", "Kawa", 19.99);
+
+        Product discountedProduct = product.withDiscountPrice(14.99);
+
+        assertAll(
+                () -> assertEquals("CODE-001", discountedProduct.getCode()),
+                () -> assertEquals("Kawa", discountedProduct.getName()),
+                () -> assertEquals(19.99, discountedProduct.getPrice()),
+                () -> assertEquals(14.99, discountedProduct.getDiscountPrice()),
+                () -> assertEquals(19.99, product.getDiscountPrice())
+        );
+    }
 }
