@@ -29,6 +29,7 @@ class CentralBankTest {
                 .taxThreshold(500.0)
                 .priceElasticityThresholds(0.1, 0.5, 1.0)
                 .initialBuyerBudgets(1000.0)
+                .maxTurns(10)
                 .build();
         centralBank = new CentralBank(config);
     }

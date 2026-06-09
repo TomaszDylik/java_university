@@ -36,6 +36,7 @@ class ObserverPatternTest {
                 .taxThreshold(1000.0)
                 .priceElasticityThresholds(0.1, 0.5, 1.0)
                 .initialBuyerBudgets(1000.0)
+                .maxTurns(10)
                 .build();
         centralBank = new CentralBank(config);
         necessity = new Product(ProductType.NECESSITY, 100.0);

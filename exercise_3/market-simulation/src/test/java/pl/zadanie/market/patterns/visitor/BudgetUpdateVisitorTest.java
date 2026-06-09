@@ -16,10 +16,12 @@ class BudgetUpdateVisitorTest {
         BudgetUpdateVisitor visitor = new BudgetUpdateVisitor();
         Buyer buyer = new Buyer(1000.0);
         buyer.setBudget(250.0);
+        buyer.setSpentAmount(180.0);
 
         buyer.accept(visitor);
 
         assertEquals(1000.0, buyer.getBudget());
+        assertEquals(0.0, buyer.getSpentAmount());
     }
 
     @Test
