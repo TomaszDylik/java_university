@@ -8,7 +8,10 @@ public record SimulationConfig(
         double defaultMargin,
         double taxThreshold,
         double[] priceElasticityThresholds,
-        double[] initialBuyerBudgets) {
+        double[] initialBuyerBudgets,
+        int maxTurns,
+        int inflationShockTurn,
+        double inflationShockValue) {
 
     public SimulationConfig {
         if (initialInflationRate < 0) {
@@ -27,6 +30,15 @@ public record SimulationConfig(
         }
         if (initialBuyerBudgets.length == 0) {
             throw new IllegalArgumentException("Initial buyer budgets must not be empty");
+        }
+        if (maxTurns <= 0) {
+            throw new IllegalArgumentException("Max turns must be positive");
+        }
+        if (inflationShockTurn < 0) {
+            throw new IllegalArgumentException("Inflation shock turn must not be negative");
+        }
+        if (inflationShockTurn > maxTurns) {
+            throw new IllegalArgumentException("Inflation shock turn must not exceed max turns");
         }
         validateNonNegativeValues(priceElasticityThresholds, "Price elasticity threshold");
         validateNonNegativeValues(initialBuyerBudgets, "Initial buyer budget");
@@ -56,6 +68,9 @@ public record SimulationConfig(
         private double taxThreshold;
         private double[] priceElasticityThresholds;
         private double[] initialBuyerBudgets;
+        private int maxTurns = 10;
+        private int inflationShockTurn;
+        private double inflationShockValue;
 
         private Builder() {
         }
@@ -85,13 +100,31 @@ public record SimulationConfig(
             return this;
         }
 
+        public Builder maxTurns(int maxTurns) {
+            this.maxTurns = maxTurns;
+            return this;
+        }
+
+        public Builder inflationShockTurn(int inflationShockTurn) {
+            this.inflationShockTurn = inflationShockTurn;
+            return this;
+        }
+
+        public Builder inflationShockValue(double inflationShockValue) {
+            this.inflationShockValue = inflationShockValue;
+            return this;
+        }
+
         public SimulationConfig build() {
             return new SimulationConfig(
                     initialInflationRate,
                     defaultMargin,
                     taxThreshold,
                     priceElasticityThresholds,
-                    initialBuyerBudgets);
+                    initialBuyerBudgets,
+                    maxTurns,
+                    inflationShockTurn,
+                    inflationShockValue);
         }
     }
 
@@ -114,13 +147,22 @@ public record SimulationConfig(
         return Double.compare(initialInflationRate, other.initialInflationRate) == 0
                 && Double.compare(defaultMargin, other.defaultMargin) == 0
                 && Double.compare(taxThreshold, other.taxThreshold) == 0
+                && maxTurns == other.maxTurns
+                && inflationShockTurn == other.inflationShockTurn
+                && Double.compare(inflationShockValue, other.inflationShockValue) == 0
                 && Arrays.equals(priceElasticityThresholds, other.priceElasticityThresholds)
                 && Arrays.equals(initialBuyerBudgets, other.initialBuyerBudgets);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(initialInflationRate, defaultMargin, taxThreshold);
+        int result = Objects.hash(
+                initialInflationRate,
+                defaultMargin,
+                taxThreshold,
+                maxTurns,
+                inflationShockTurn,
+                inflationShockValue);
         result = 31 * result + Arrays.hashCode(priceElasticityThresholds);
         result = 31 * result + Arrays.hashCode(initialBuyerBudgets);
         return result;
@@ -134,6 +176,9 @@ public record SimulationConfig(
                 + ", taxThreshold=" + taxThreshold
                 + ", priceElasticityThresholds=" + Arrays.toString(priceElasticityThresholds)
                 + ", initialBuyerBudgets=" + Arrays.toString(initialBuyerBudgets)
+                + ", maxTurns=" + maxTurns
+                + ", inflationShockTurn=" + inflationShockTurn
+                + ", inflationShockValue=" + inflationShockValue
                 + ']';
     }
 }

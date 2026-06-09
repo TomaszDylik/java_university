@@ -20,6 +20,9 @@ class SimulationConfigTest {
                 .taxThreshold(1000.0)
                 .priceElasticityThresholds(ELASTICITY_THRESHOLDS)
                 .initialBuyerBudgets(BUYER_BUDGETS)
+                .maxTurns(20)
+                .inflationShockTurn(10)
+                .inflationShockValue(0.05)
                 .build();
 
         assertEquals(0.02, config.initialInflationRate());
@@ -27,6 +30,9 @@ class SimulationConfigTest {
         assertEquals(1000.0, config.taxThreshold());
         assertArrayEquals(ELASTICITY_THRESHOLDS, config.priceElasticityThresholds());
         assertArrayEquals(BUYER_BUDGETS, config.initialBuyerBudgets());
+        assertEquals(20, config.maxTurns());
+        assertEquals(10, config.inflationShockTurn());
+        assertEquals(0.05, config.inflationShockValue());
     }
 
     @Test
@@ -34,7 +40,7 @@ class SimulationConfigTest {
         double[] elasticity = {0.1, 0.5};
         double[] budgets = {100.0, 200.0};
 
-        SimulationConfig config = new SimulationConfig(0.02, 0.15, 1000.0, elasticity, budgets);
+        SimulationConfig config = new SimulationConfig(0.02, 0.15, 1000.0, elasticity, budgets, 10, 0, 0.0);
 
         elasticity[0] = 99.0;
         budgets[0] = 99.0;
@@ -53,6 +59,32 @@ class SimulationConfigTest {
                 .taxThreshold(1000.0)
                 .priceElasticityThresholds(ELASTICITY_THRESHOLDS)
                 .initialBuyerBudgets(BUYER_BUDGETS)
+                .maxTurns(10)
+                .build());
+    }
+
+    @Test
+    void shouldRejectNonPositiveMaxTurns() {
+        assertThrows(IllegalArgumentException.class, () -> SimulationConfig.builder()
+                .initialInflationRate(0.02)
+                .defaultMargin(0.15)
+                .taxThreshold(1000.0)
+                .priceElasticityThresholds(ELASTICITY_THRESHOLDS)
+                .initialBuyerBudgets(BUYER_BUDGETS)
+                .maxTurns(0)
+                .build());
+    }
+
+    @Test
+    void shouldRejectInflationShockTurnAboveMaxTurns() {
+        assertThrows(IllegalArgumentException.class, () -> SimulationConfig.builder()
+                .initialInflationRate(0.02)
+                .defaultMargin(0.15)
+                .taxThreshold(1000.0)
+                .priceElasticityThresholds(ELASTICITY_THRESHOLDS)
+                .initialBuyerBudgets(BUYER_BUDGETS)
+                .maxTurns(5)
+                .inflationShockTurn(10)
                 .build());
     }
 
